@@ -1,0 +1,40 @@
+﻿@model SportsAggregator.Models.Account.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+<script type="text/javascript" src="~/Scripts/Register.js"></script>
+<br />
+<div style="padding-top:30px">
+    <h2> Login with your Account Credentials.</h2>
+    <hr />
+</div>
+@if (Session["Login"] != null)
+{
+    <div class="row" style="margin-top:5%; margin-left:3%; align-content:center">
+        <textarea style="font-weight:bold; font-family:'Times New Roman', Times, serif; color:Black; background-color:red; width:1000px; font-size:larger; text-align:center" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@Session["Login"]</textarea>
+    </div>
+    @(Session["Login"] = null)
+}
+
+@Html.ValidationSummary(true)
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div>
+        <form action="~/Home/Index.cshtml">
+            <div class="col-md-2">UserName<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERNAME, new { id = "UserName", placeholder = "Enter your UserName", required = true })
+                @Html.ValidationMessage("UserName", new { id = "errorMessage1", style = "color: red" })
+            </div><br /><br />
+            <div class="col-md-2">Password<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PASSWORD, new { type = "password", id = "password", placeholder = "Enter your Password", required = true })
+                @Html.ValidationMessage("Password", new { id = "errorMessage2", style = "color: red" })
+            </div><br /><br />
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-default" value="Login">Login</button>
+                <button class="btn btn-default" value="Cancel" onclick="Clear()">Cancel</button>
+            </div><br /><br />
+        </form>
+    </div>
+}

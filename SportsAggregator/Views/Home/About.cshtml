@@ -1,0 +1,363 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<br />
+<div style=" padding-top: 30px">
+    <h2>About Sports Aggregator information System</h2>
+    <h3>Introduction</h3>
+    <p>
+        Sports Aggregator Information System is a web interface system that has been developed as
+        a combination of expert system (agents posting their articles being the experts) and user
+        interactive system (here user is also able to post their articles or views, but it would be validated
+        by an expert before publishing it on the website). While there exist many websites that provide
+        sports aggregation systems such as Yahoo Sports, Fox Sports, Sportskeeda.com, and many
+        others; these systems are limited in terms of functionality as they are either expert systems or
+        user interactive system but not the combination of both. On the other hand, the system that our
+        group is developing is comprehensive and provides a combination of functionalities that are
+        provided by the expert system as well as user interactive system.
+    </p>
+
+    <p>
+        In the sports aggregator information system, the users will be able to follow the sports that they
+        like. The system currently offers 9 sports for users (i.e., <span style="font-weight:bolder">
+            Cricket, Football, BasketBall, Tennis, Baseball, Hockey, Badminton, VolleyBall and Golf
+        </span>) to follow in which users can choose their interested
+        sports while registering to the system. Further expansion of the sports offering can be added in the
+        future. Some of the functionalities that the system will include are articles authentication, interface
+        and news customization, Tournament details, game tickets referral links, and interest sports news feeds.
+    </p>
+
+    <h3>The Flow of Application</h3>
+
+    <p>
+        Initially, the homepage of application is loaded by the URL (<a href="https://sportsaggregatorsn.azurewebsites.net/">
+    "https://sportsaggregatorsn.azurewebsites.net/"
+</a>), we can navigate to this page by clicking on <span style="font-weight:bolder">
+            "Sports Aggregator"
+        </span> and <span style="font-weight:bolder">"Home"</span> links available at top of the screen. In Home page,
+        we have list of sports offered by the system. If any user is unaware of any sport, he/she can click on respective sport image and
+        get some basic information about that sport.(which is done by redirecting to Wikipedia Page of respective sport).
+    </p>
+
+    <p>
+        Once the User gets to know about the sports, he/she can register to the system by clicking the <span style="font-weight:bolder">
+            "Register"
+        </span> link at top of the screen. In Registration Page, User needs to fill all the mandatory fields before clicking on Register
+        button at bottom of screen. User can select multiple sports from the list by Ctrl press key + mouse click. User can
+        give his preferred Username (if username already exists in the database, then the page shows an error message saying
+        to give another preferrable username) and also password (which should be atleast 8 characters). Once the User fills
+        all his details and click on Register, all these details will be stored in the backend database. And User will be navigated
+        to Login Page of the system.
+    </p>
+
+    <p>
+        If user already has an account he/she can navigate to Login Page by clicking on the <span style="font-weight:bolder">
+            "Login"
+        </span> link at the top of the screen. In Login Page, users have to login with their registered Username and Password.
+        The System checks the entered username and password with the values in the database. If they are invalid, then it displays respective
+        error message on screen, else it redirects to respective Homepage of user.
+    </p>
+
+    <p>
+        Along with these links, there is a <span style="font-weight:bolder">"Contact"</span> link at top of screen, which navigates to
+        Contact details page by clicking. In Contact details page, currently we have our group member names and Email_id's.
+    </p>
+
+    <p>
+        Once User Logged in, the menu at top of screen now shows <span style="font-weight:bolder">"Sports Aggregator"</span>,
+        <span style="font-weight:bolder">"Home"</span> (now these links navigate to User's Homepage), <span style="font-weight:bolder">
+            "About"
+        </span>, <span style="font-weight:bolder">"Contact"</span>(Similar to previous), a text saying <span style="font-weight:bolder">
+            "Hello, %Username%"
+        </span> and <span style="font-weight:bolder">"Log off"</span> link (which logs off User from application
+        and redirects to Login Page of application). In Users homepage, as of now we are displaying 4 buttons (i.e., Players, Tournaments,
+        Tickets and Posts, which navigates to their respective pages), Notifications (i.e., News feed about sports in Chronological order
+        fetched from backend database) and Articles.
+    </p>
+
+    <h3>The CRUD Operations</h3>
+
+    <h4>For checking the CREATE</h4>
+
+    <p>
+        CREATE operation can be checked using Registration Page (inserts Data in tables USERS, LOGIN_PROFILE and USERS_SPORTS) and in Users' Posts Page
+        (inserts data in USER_ARTICLES Table).
+
+        <ul>
+            <li>
+                Please go to the Registration Page by clicking on the
+                <span style="font-weight:bolder">"Register"</span> link at top of screen.
+                In this page, fill all the Mandatory fields as per the instructions mentioned and click on Register, then it will automatically inserts all the entered data
+                into database tables USERS (i.e., Users details), LOGIN_PROFILE (i.e., USERNAME and PASSWORD details) and USERS_SPORTS (i.e., Sports details to which the new user registered).
+                For Verification, you can go to Login Page and enter the UserName and Password with which you have registered. It checks those 2 fields with the database values. If matches, it redirects to the HomePage of User
+                and can confirm that the new data has been created in database.
+            </li>
+
+            <li>
+                Now for Users Posts Page, you can go to this Page after logging in with an user crdentials and click on "Posts" button in Users HomePage.
+                Here User can post an article on any sports registered by user. User needs to give Title and Description for his article, and user can upload
+                an image file (only one of file type jpg/jpeg/png) and a document file (only one of file type pdf/txt/doc) that relates to his article. Once User clicks on Post
+                button at bottom of screen then it creates a new record in the database table USER_ARTICLES (with all these details, where the paths with filenames for uploaded images and documents are stored in table instead of
+                direct files). This can be checked by following the steps in Update/Delete Operation sections.
+            </li>
+        </ul>
+    </p>
+
+    <h4>For checking the READ</h4>
+
+    <p>
+        READ from database is done for
+        <ul>
+            <li>REGISTER page (To display the list of countries from COUNTRIES table, and list of sports offered by system from SPORTS table)</li>
+            <li>LOGIN Page (For comparing the entered data with data in LOGIN_PROFILE table)</li>
+            <li>USERS or AGENTS HomePage (To display the Notifications from the NOTIFICATIONS table, Articles that are validated by Agents from USER_ARTICLES Table with VALID_FLAG column value as "Y")</li>
+            <li>USERS Posts Page (To display list of sports to which that particular User registered from USERS_SPORTS table)</li>
+            <li>AGENTS Validate Posts Page (To display the count of articles to be validated by AGENTS at the POSTS and ValidatePosts buttons, to display articles to be validated by AGENTS from USER_ARTICLES table with VALID_FLAG column value as "N")</li>
+        </ul>
+    </p>
+
+    <h4>For checking the UPDATE</h4>
+
+    <p>
+        UPDATE Operation is done in Login Page and AGENTS Validate Posts Page.
+        <ul>
+            <li>
+                In Login Page, whenever User Logins to the system, an update takes place in database table LOGIN_PROFILE for columns NO_OF_LOGINS (incremented by 1),
+                LOGINSTATUS (as LoggedIn Successfully), LAST_LOGIN_DATE (with the timestamp when the User loggedin).
+                While Logoff link clicked at top of screen then the LOGINSTATUS column in LOGIN_PROFILE is updated to "LoggedOut Successfully".
+            </li>
+            <li>
+                In AGENTS Validate Posts Page, Initially to go to this page you need to login with <span style="font-weight:bolder">AGENTS Credentials (Username:<span style="color:red">agent123</span>, Password:<span style="color:red">agent123</span>).</span>
+                Once after logged in with Agents credentials click on Posts Page, where we will have the list of articles created by Users that needs to be validated by Agent with 2 buttons Publish and Delete. Agent checks the articles along with their documents and if it is valid
+                article, Agent clicks on Publish button of that respective article, then an update takes place in database table USER_ARTICLES for columns VALID_FLAG (updated  to "Y" from "N"), VALIDATED_BY (updated with AGENT_ID validated which is taken from the AGENTS Table),
+                VALIDATED_DATE with the current date timestamp. Once this Update is done then this article is published in HomePage of all USERS and AGENTS. (For navigating to HomePage of Users and Agents please Click on Home link at top of screen only after logging in.)
+            </li>
+        </ul>
+    </p>
+
+    <h4>For checking the DELETE</h4>
+
+    <p>
+        DELETE Operation is done in AGENTS Validate Posts Page.
+        <ul>
+            <li>
+                In AGENTS Validate Posts Page, Initially to go to this page you need to login with <span style="font-weight:bolder">AGENTS Credentials (Username:<span style="color:red">agent123</span>, Password:<span style="color:red">agent123</span>).</span>
+                Once after logged in with Agents credentials click on Posts Page, where we will have the list of articles created by Users that needs to be validated by Agent with 2 buttons Publish and Delete. Agent checks the articles along with their documents and if it is not a
+                valid article, Agent clicks on Delete button of that respective article, then it deletes the article record from the USER_ARTICLES table in database and not published to all Users.
+            </li>
+        </ul>
+    </p>
+
+    <h3>Controllers</h3>
+
+    <p>
+        The Controllers Used for application are:
+        <ul>
+            <li>
+                <span style="font-weight:bolder">HomeController: </span> This is used for websites Home, About and Contact Pages.
+                <ul>
+                    Below are Action Methods in HomeController
+                    <li>
+                        <span style="font-weight:bolder">Index(): </span> HttpGet Method for Home Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">About(): </span> HttpGet Method for About Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Contact(): </span> HttpGet Method for Contact Page.
+                    </li>
+                </ul>
+                <br />
+                <ul>
+                    Below are Views related to HomeController
+                    <li>
+                        <span style="font-weight:bolder">Index: </span> For Home Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">About: </span> For About Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Contact: </span> For Contact Page.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span style="font-weight:bolder">AccountController:</span> This is used for Registration and Login Page.
+                <ul>
+                    Below are Action Methods in AccountController
+                    <li>
+                        <span style="font-weight:bolder">Login(): </span> HttpGet Method for Login Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Login(LoginModel model): </span> HttpPost Method for Login Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Register(): </span> HttpGet Method for Register Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Register(RegisterModel model): </span> HttpPost Method for Register Page.
+                    </li>
+                </ul>
+                <br />
+                <ul>
+                    Below are Views related to AccountController
+                    <li>
+                        <span style="font-weight:bolder">Login: </span> For Login Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Register: </span> For Register Page.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span style="font-weight:bolder">UsersController:</span> This is used for Users Home, Players, Tournaments, Tickets and Posts Pages.
+                <ul>
+                    Below are Action Methods in UsersController
+                    <li>
+                        <span style="font-weight:bolder">Home(): </span> HttpGet Method for Home Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Players(): </span> HttpGet Method for Players Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tournaments(): </span> HttpGet Method for Tournaments Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tickets(): </span> HttpGet Method for Tickets Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Posts(): </span> HttpGet Method for Posts Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Posts(PostsModel model): </span> HttpPost Method for Posts Page.
+                    </li>
+                </ul>
+                <br />
+                <ul>
+                    Below are Views related to UsersController
+                    <li>
+                        <span style="font-weight:bolder">Home: </span> For Home Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Players: </span> For Players Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tournaments: </span> For Tournaments Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tickets: </span> For Tickets Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Posts: </span> For Posts Page.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span style="font-weight:bolder">AgentsController:</span> This is used for Users Home, Players, Tournaments, Tickets, Validate Posts and Add Posts Pages.
+                <ul>
+                    Below are Action Methods in AgentsController
+                    <li>
+                        <span style="font-weight:bolder">Home(): </span> HttpGet Method for Home Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Players(): </span> HttpGet Method for Players Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tournaments(): </span> HttpGet Method for Tournaments Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tickets(): </span> HttpGet Method for Tickets Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">ValidatePosts(): </span> HttpGet Method for Validate Posts Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">UpdatePost(int id): </span> HttpPost Method to update database for that article id.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">DeletePost(int id): </span> HttpPost Method to delete that article id record from database.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">AddPosts(): </span> HttpGet Method for Add Posts Page.
+                    </li>
+                </ul>
+                <br />
+                <ul>
+                    Below are Views related to AgentsController
+                    <li>
+                        <span style="font-weight:bolder">Home: </span> For Home Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Players: </span> For Players Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tournaments: </span> For Tournaments Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">Tickets: </span> For Tickets Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">ValidatePosts: </span> For Validate Posts Page.
+                    </li>
+                    <li>
+                        <span style="font-weight:bolder">AddPosts: </span> For Add Posts Page.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span style="font-weight:bolder">ErrorController:</span> This is used for displaying error Page if any exception occurs in any of pages.
+                <ul>
+                    Below are Action Methods in ErrorController
+                    <li>
+                        <span style="font-weight:bolder">Error(): </span> HttpGet Method for Error Page.
+                    </li>
+                </ul>
+                <br />
+                <ul>
+                    Below are Views related to HomeController
+                    <li>
+                        <span style="font-weight:bolder">Error: </span> For Error Page.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        Along with these Views, we have also created Shared View files (_Layout.cshtml and _LoginPartial.cshtml) and a _ViewStart.cshtml file.
+    </p>
+
+    <h3>Database Tables</h3>
+
+    <p>
+        As per our initial business idea we have created a database with below 22 tables, out of which we are using the below 10 highlighted tables for CRUD operations as per the current application.
+        <ul>
+            <li>AGENT_ARTICLES</li>
+            <li><span style="color:red">AGENTS</span></li>
+            <li>BADMINTON_PLAYERS</li>
+            <li>BASEBALL_PLAYERS</li>
+            <li>BASKETBALL_PLAYERS</li>
+            <li><span style="color:red">COUNTRIES</span></li>
+            <li>CRICKET_PLAYERS</li>
+            <li>FOOTBALL_PLAYERS</li>
+            <li>GOLF_PLAYERS</li>
+            <li>HOCKEY_PLAYERS</li>
+            <li><span style="color:red">LOGIN_PROFILE</span></li>
+            <li><span style="color:red">MANAGERS</span></li>
+            <li><span style="color:red">NOTIFICATIONS</span></li>
+            <li><span style="color:red">ROLES</span></li>
+            <li><span style="color:red">SPORTS</span></li>
+            <li>TENNIS_PLAYERS</li>
+            <li>TICKET_VENDORS</li>
+            <li>TOURNAMENTS</li>
+            <li><span style="color:red">USER_ARTICLES</span></li>
+            <li><span style="color:red">USERS</span></li>
+            <li><span style="color:red">USERS_SPORTS</span></li>
+            <li>VOLLEYBALL_PLAYERS</li>
+        </ul>
+    </p>
+
+    <h3>Deployment</h3>
+
+    <p>The application has been deployed in azure website and the URL to access the application is <a href="https://sportsaggregatorsn.azurewebsites.net/">
+    "https://sportsaggregatorsn.azurewebsites.net/"
+</a></p>
+</div>

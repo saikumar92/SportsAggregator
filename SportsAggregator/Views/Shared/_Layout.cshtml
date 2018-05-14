@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="~/Images/logo.jpg" type="image/jpg">
+    <title>@ViewBag.Title - Sports Aggregator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (@Session["UserName"] == null)
+                {
+                    @Html.ActionLink("Sports Aggregator", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    if (@Session["RoleId"].ToString() == "3")
+                    {
+                        @Html.ActionLink("Sports Aggregator", "Home", "Users", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                    else if(@Session["RoleId"].ToString() == "2")
+                    {
+                        @Html.ActionLink("Sports Aggregator", "Home", "Agents", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                }
+            </div>
+            <div class="navbar-collapse collapse" id="Menu">
+                <ul class="nav navbar-nav">
+                    @if (@Session["UserName"] == null)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    }
+                    else
+                    {
+                        if (@Session["RoleId"].ToString() == "3")
+                        {
+                            <li>@Html.ActionLink("Home", "Home", "Users")</li>
+                        }
+                        else if (@Session["RoleId"].ToString() == "2")
+                        {
+                            <li>@Html.ActionLink("Home", "Home", "Agents")</li>
+                        }
+                    }
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div>
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Group 30 Sports Aggregator Information System</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

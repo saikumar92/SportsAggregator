@@ -1,0 +1,77 @@
+﻿@using SportsAggregator.Models.DataModels
+@using System
+@{
+    ViewBag.Title = "Users Home";
+}
+
+<style>
+    .Buttons:hover {
+        background-color: dimgray;
+        color:white;
+    }
+</style>
+
+<div class="row" style="padding-top:100px;text-align:center;">
+    <div class="col-md-15">
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Users")'"> Players </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Users")'"> Tournaments </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Users")'"> Tickets </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Posts","Users")'"> Posts </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<div class="row" style="margin-left:2%">
+    <h2>Notifications :</h2>
+</div>
+<div class="row" style="height:100px;width:100px; margin-bottom:20%; margin-left:2%">
+   <textarea style="height:300px;width:1040px;background-color:lightgray;font-weight:bold;border-width:thick;font-size:larger;" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@ViewData["Notifications"]</textarea>
+</div>
+<div class="row" style="margin-left:2%">
+    <h2>Articles :</h2>
+</div>
+<div class="row" style="text-align:center; margin-left:2%">
+    <table style="text-align: center;">
+        <tr>
+            <td style="text-align: center;">
+                @foreach( var item in (List<USER_ARTICLES>)ViewData["articles"])
+                {
+                    <table>
+                        <tr>
+                            <td rowspan="3"> <img src=@item.IMAGE1 style="height:200px; width:200px; visibility:visible"/></td>
+                            <td style="text-align:left; width:840px; padding-left:1%"><span style="font-weight:bold">Title: </span><a>@item.TITLE.ToString()</a></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left; width:840px; padding-left:1%"><span style="font-weight:bold">Description: </span><p>@item.DESCRIPTION1.ToString() </p></td>
+                        </tr>
+                        <tr>
+                            <td style="width:840px; padding-left:1%">
+                                <div style="float: left; text-align: left">
+                                    <span style="font-weight:bold">Posted By: </span>
+                                    <span> @item.USER.FIRST_NAME @item.USER.LAST_NAME</span>
+                                </div>
+                                <div style="float: right; text-align: right">
+                                    @if(@item.DOCUMENT2==null && @item.DOCUMENT1==null)
+                                    {
+                                    }
+                                    else if(@item.DOCUMENT1!=null)
+                                    {
+                                        <a href=@item.DOCUMENT1>Document 1</a>
+                                    }
+                                    else
+                                    {
+                                        <a href=@item.DOCUMENT1>Document 1</a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href=@item.DOCUMENT2>Document 2</a>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br /><br />
+                }
+            </td>
+        </tr>
+    </table>
+</div>

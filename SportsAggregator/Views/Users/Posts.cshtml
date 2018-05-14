@@ -1,0 +1,72 @@
+﻿@model SportsAggregator.Models.Users.PostsModel
+@{
+    ViewBag.Title = "Users Post Article";
+}
+
+<style>
+    .Buttons:hover {
+        background-color: dimgray;
+        color: white;
+    }
+
+    .PostButton {
+        background-color: dimgray;
+        color: white;
+    }
+</style>
+<script type="text/javascript" src="~/Scripts/Register.js"></script>
+
+<div class="row" style="padding-top:100px;text-align:center;">
+    <div class="col-md-15">
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Users")'" formnovalidate> Players </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Users")'" formnovalidate> Tournaments </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Users")'" formnovalidate> Tickets </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="PostButton" onclick="location.href='@Url.Action("Posts","Users")'" formnovalidate> Posts </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+@using (Html.BeginForm("Posts", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="RegisterForm">
+        <form action="Register" method="post">
+            @if(Session["Output"]!=null)
+            {
+                <div class="row" style="margin-top:5%; margin-left:3%; align-content:center">
+                    <textarea style="font-weight:bold; font-family:'Times New Roman', Times, serif; color:Black; background-color:greenyellow; width:1000px; font-size:larger; text-align:center" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@Session["Output"]</textarea>
+                </div>
+                @(Session["Output"]=null)
+            }
+            
+            <div class="row" style="margin-top:5%; margin-left:3%">
+                <label style="font-weight:bold; font-size:x-large">Sport <span class="smallred" style="color:red;">*</span>:</label>
+                @Html.DropDownListFor(model => model.SPORT, new SelectList((System.Collections.IEnumerable)ViewData["Sports"], "ID", "NAME"), "Select your Sport", new { id = "Sport", required = true })
+            </div>
+            <div class="row" style="margin-left:3%">
+                <label style="font-size:x-large">Title of Article <span class="smallred" style="color:red;">*</span>:</label>
+                @Html.TextBoxFor(model => model.TITLE, new { id = "Title", name = "Title", placeholder = "Enter title for your article", style = "width:550px", required = true })
+            </div>
+            <div class="row" style="margin-left:3%">
+                <label style="font-size:x-large">Description <span class="smallred" style="color:red;">*</span>:</label><br />
+                @Html.TextAreaFor(model => model.Description, new { id = "Description", name = "Description", placeholder = "Enter Description for your article", style = "height:300px; width:1000px; font-size:larger; text-wrap:normal", required = true })
+            </div>
+            <div class="row" style="margin-left:3%">
+                <label style="font-size:x-large">Image :</label>
+                <input type="file" name="imgUpload" id="imgUpload" accept=".jpg,.jpeg,.png" title="Upload an image file" />
+                @Html.ValidationMessage("ImageError", new { id = "errorMessage1", style = "color: red" })
+            </div>
+            <div class="row" style="margin-left:3%">
+                <label style="font-size:x-large">Documents :</label>
+                <input type="file" name="fileUpload" id="fileUpload" accept=".pdf,.txt,.doc" title="Upload a document" />
+                @Html.ValidationMessage("FileError", new { id = "errorMessage2", style = "color: red" })
+            </div>
+            <div class="row" style="margin-right:5%; text-align:center">
+                <button type="submit" id="submit_btn" class="btn btn-default" value="Submit" title="Post your article" style="border:solid;background-color:ButtonFace">Post</button>
+                <button type="reset" class="btn btn-default" value="Cancel" title="Cancel the post" style="border:solid;background-color:ButtonFace">Cancel</button>
+            </div>
+        </form>
+    </div>
+}

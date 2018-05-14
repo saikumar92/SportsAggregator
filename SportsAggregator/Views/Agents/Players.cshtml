@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Agents Players";
+}
+
+<style>
+    .Buttons:hover {
+        background-color: dimgray;
+        color:white;
+    }
+
+    .PlayerButton {
+        color: white;
+        background-color: dimgray;
+    }
+</style>
+
+<div class="row" style="padding-top:100px;text-align:center;">
+    <div class="col-md-15">
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="PlayerButton" onclick="location.href='@Url.Action("Players","Agents")'" formnovalidate> Players </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Agents")'" formnovalidate> Tournaments </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Agents")'" formnovalidate> Tickets </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("ValidatePosts","Agents")'"> Posts (@ViewData["Count"])</button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<div class="row" style="margin-left:2%; text-align:center">
+    <h2 style="text-align:center">This Page has nothing related to grading schema, but in future we can develop this page for adding/updating the Player details by agents.</h2>
+</div>

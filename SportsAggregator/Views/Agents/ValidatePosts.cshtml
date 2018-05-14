@@ -1,0 +1,97 @@
+﻿@using SportsAggregator.Models.DataModels
+@{
+    ViewBag.Title = "Agents Validate Posts";
+}
+
+<style>
+    .Buttons:hover {
+        background-color: dimgray;
+        color:white;
+    }
+
+    .PostButton {
+        color: white;
+        background-color: dimgray;
+    }
+</style>
+
+<div class="row" style="padding-top:100px;text-align:center;">
+    <div class="col-md-15">
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Agents")'" formnovalidate> Players </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Agents")'" formnovalidate> Tournaments </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Agents")'" formnovalidate> Tickets </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="PostButton" onclick="location.href='@Url.Action("ValidatePosts","Agents")'" formnovalidate> Posts (@ViewData["Count"])</button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<div class="row" style="text-align:center; margin-top:5%">
+    <button style="height:100px;width:200px;font-size:23px;border-color:#000000" class="PostButton" onclick="location.href='@Url.Action("ValidatePosts","Agents")'" formnovalidate> Validate (@ViewData["Count"]) </button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <button style="height:100px;width:200px;font-size:23px;border-color:#000000" class="Buttons" formnovalidate onclick="location.href='@Url.Action("AddPosts","Agents")'"> Add </button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+@if (Session["UpdatePosts"] != null)
+{
+    <div class="row" style="margin-top:5%; margin-left:3%; align-content:center">
+        <textarea style="font-weight:bold; font-family:'Times New Roman', Times, serif; color:Black; background-color:greenyellow; width:1000px; font-size:larger; text-align:center" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@Session["UpdatePosts"]</textarea>
+    </div>
+    @(Session["UpdatePosts"] = null)
+}
+
+<div class="row" style="margin-left:5%">
+    <h2>Articles to be validated:</h2>
+</div>
+
+<div class="row" style="text-align:center; margin-left:2%">
+    <table style="text-align: center;">
+        <tr>
+            <td style="text-align: center;">
+                @foreach (var item in (List<USER_ARTICLES>)ViewData["articles"])
+                {
+                    <table>
+                        <tr>
+                            <td rowspan="3"> <img src=@item.IMAGE1 style="height:200px; width:200px; visibility:visible" /></td>
+                            <td style="text-align:left; width:840px; padding-left:1%"><span style="font-weight:bold">Title: </span><a>@item.TITLE.ToString()</a></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:left; width:840px; padding-left:1%"><span style="font-weight:bold">Description: </span><p>@item.DESCRIPTION1.ToString() </p></td>
+                        </tr>
+                        <tr>
+                            <td style="width:840px; padding-left:1%">
+                                <div style="float: left; text-align: left">
+                                    <span style="font-weight:bold">Posted By: </span>
+                                    <span> @item.USER.FIRST_NAME @item.USER.LAST_NAME</span>
+                                </div>
+                                <div style="float: right; text-align: right">
+                                    @if (@item.DOCUMENT2 == null && @item.DOCUMENT1 == null)
+                                    {
+                                        <button type="submit" id="submit_btn" class="btn btn-default" value=@item.ID onClick="location.href='/Agents/UpdatePost/@item.ID'" title="Publish this article">Publish</button>
+                                        <button class="btn btn-default" value=@item.ID onClick="location.href='/Agents/DeletePost/@item.ID'" title="Delete this Article">Delete</button>
+                                    }
+                                    else if (@item.DOCUMENT1 != null)
+                                    {
+                                        <a href=@(item.DOCUMENT1)>Document 1</a>
+                                        <button type="submit" id="submit_btn" class="btn btn-default" value=@item.ID onClick="location.href='/Agents/UpdatePost/@item.ID'" title="Publish this article">Publish</button>
+                                        <button class="btn btn-default" value=@item.ID onClick="location.href='/Agents/DeletePost/@item.ID'" title="Delete this Article">Delete</button>
+                                    }
+                                    else
+                                    {
+                                        <a href=@(item.DOCUMENT1)>Document 1</a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href=@(item.DOCUMENT2)>Document 2</a>
+                                        <button type="submit" id="submit_btn" class="btn btn-default" value=@item.ID onClick="location.href='/Agents/UpdatePost/@item.ID'" title="Publish this article">Publish</button>
+                                        <button class="btn btn-default" value=@item.ID onClick="location.href='/Agents/DeletePost/@item.ID'" title="Delete this Article">Delete</button>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br /><br />
+                }
+            </td>
+        </tr>
+    </table>
+</div>

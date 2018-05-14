@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Users Tournaments";
+}
+
+<style>
+    .Buttons:hover {
+        background-color: dimgray;
+        color: white;
+    }
+
+    .TournamentsButton {
+        background-color: dimgray;
+        color: white;
+    }
+</style>
+
+<div class="row" style="padding-top:100px;text-align:center;">
+    <div class="col-md-15">
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Users")'" formnovalidate> Players </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="TournamentsButton" onclick="location.href='@Url.Action("Tournaments","Users")'" formnovalidate> Tournaments </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Users")'" formnovalidate> Tickets </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Posts","Users")'" formnovalidate> Posts </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<div class="row" style="margin-left:2%; text-align:center">
+    <h2 style="text-align:center">This Page has nothing related to grading schema, but in future we can develop this page for providing the Tournament details to users.</h2>
+</div>
+

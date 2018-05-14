@@ -1,0 +1,88 @@
+﻿@using SportsAggregator.Models.DataModels
+@model SportsAggregator.Models.Account.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<script type="text/javascript" src="~/Scripts/Register.js"></script>
+<br />
+
+<div style="padding-top:30px">
+    <h2> Create a new account.</h2>
+    <hr />
+</div>
+@Html.ValidationSummary(true)
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    <div id="RegisterForm">
+        <form action="Register" method="post">
+            <div class="col-md-2">First name<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.FIRST_NAME, new { id = "FirstName", name = "First_Name", placeholder = "Enter your First Name", required = true })
+            </div> <br /><br />
+            <div class="col-md-2">Middle name: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.MIDDLE_NAME, new { id = "MiddleName", placeholder = "(Optional)" })
+            </div> <br /><br />
+            <div class="col-md-2">Last name<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.LAST_NAME, new { id = "LastName", placeholder = "Enter your Last Name", required = true })
+            </div><br /><br />
+            <div class="col-md-2">Address Line1<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.ADDRESS_LINE_1, new { id = "AddressLine1", placeholder = "Enter your Address", required = true })
+            </div><br /><br />
+            <div class="col-md-2">Address Line2: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.ADDRESS_LINE_2, new { id = "AddressLine2", placeholder = "Enter your Address" })
+            </div><br /><br />
+            <div class="col-md-2">City<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.CITY, new { id = "City", placeholder = "Enter your City", required = true })
+            </div><br /><br />
+            <div class="col-md-2">State<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.STATE, new { id = "State", placeholder = "Enter your State", required = true })
+            </div><br /><br />
+            <div class="col-md-2">Zip Code<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.ZIPCODE, new { id = "ZipCode", placeholder = "Enter your Zip Code", required = true })
+            </div><br /><br />
+            <div class="col-md-2">Country<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.COUNTRY, new SelectList((System.Collections.IEnumerable)ViewData["Countries"], "ID", "COUNTRY1"), "Select your Country", new { id = "Country", required = true })
+            </div><br /><br />
+            <div class="col-md-2">
+                Interested Sports<span class="smallred" style="color:red;">*</span>: <br /><br />
+                <p>(For Selecting Multiple Sports use Ctrl key + mouse click)</p>
+            </div>
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.SPORTS, new MultiSelectList((List<SPORT>)ViewData["Sports"], "ID", "NAME"), new { id = "Sports", required = true, size = "6" })
+            </div><br /><br /><br /><br /><br /><br />
+            <div class="col-md-2">Email<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.USERS.EMAIL_ID, new { id = "Email", type = "email", placeholder = "Enter your Email", required = true })
+            </div><br /><br />
+            <div class="col-md-2">UserName<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LOGIN_PROFILES.USERNAME, new { id = "Username", placeholder = "Enter a preferred UserName", required = true })
+                @Html.ValidationMessage("UserName", new { id = "errormessage1", style = "color:red" })
+            </div><br /><br />
+            <div class="col-md-2">Password<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LOGIN_PROFILES.PASSWORD, new { type = "password", id = "password", name = "password", placeholder = "Type a Password", required = true, onkeyup = "check();" })
+                <span id="message1"></span>
+            </div><br /><br />
+            <div class="col-md-2">Confirm Password<span class="smallred" style="color:red;">*</span>: </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LOGIN_PROFILES.PASSWORD, new { type = "password", id = "confirm_password", name = "confirm_password", placeholder = "Re-Type the same Password", required = true, onkeyup = "check();" })
+                <span id="message"></span>
+            </div><br /><br />
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" id="submit_btn" class="btn btn-default" value="Submit">Register</button>
+                <button class="btn btn-default" value="Cancel" onclick="Register_Clear()">Cancel</button>
+            </div><br /><br />
+        </form>
+    </div>
+}

@@ -1,0 +1,40 @@
+﻿@using SportsAggregator.Models.DataModels
+@{
+    ViewBag.Title = "Agents Validate Posts";
+}
+
+<style>
+    .Buttons:hover {
+        background-color: dimgrey;
+        color:white;
+    }
+
+    .PostButton {
+        color: white;
+        background-color: dimgrey;
+    }
+</style>
+
+<div class="row" style="padding-top:100px;text-align:center;">
+    <div class="col-md-15">
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Agents")'" formnovalidate> Players </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Agents")'" formnovalidate> Tournaments </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Agents")'" formnovalidate> Tickets </button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="PostButton" onclick="location.href='@Url.Action("ValidatePosts","Agents")'" formnovalidate> Posts (@ViewData["Count"])</button>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+</div>
+
+<div class="row" style="text-align:center; margin-top:5%">
+    <button style="height:100px;width:200px;font-size:23px;border-color:#000000" class="Buttons" formnovalidate onclick="location.href='@Url.Action("ValidatePosts","Agents")'"> Validate (@ViewData["Count"]) </button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <button style="height:100px;width:200px;font-size:23px;border-color:#000000" class="PostButton" formnovalidate onclick="location.href='@Url.Action("AddPosts","Agents")'"> Add </button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<div class="row" style="margin-left:2%; text-align:center">
+    <h2 style="text-align:center">This Page has nothing related to grading schema, but in future we can develop this page for adding the posts by agents.</h2>
+</div>
