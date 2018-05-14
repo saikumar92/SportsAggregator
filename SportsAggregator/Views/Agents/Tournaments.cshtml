@@ -16,13 +16,16 @@
 
 <div class="row" style="padding-top:100px;text-align:center;">
     <div class="col-md-15">
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Agents")'" formnovalidate> Players </button>
+        <a href="@Url.Action("Players","Agents")" class="btn btn-primary btn-lg" formnovalidate> Players </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="TournamentButton" onclick="location.href='@Url.Action("Tournaments","Agents")'" formnovalidate> Tournaments </button>
+
+        <a href="@Url.Action("Tournaments","Agents")" class="btn btn-primary btn-lg" formnovalidate> Tournaments </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Agents")'" formnovalidate> Tickets </button>
+
+        <a href="@Url.Action("Tickets","Agents")" class="btn btn-primary btn-lg" formnovalidate> Tickets </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("ValidatePosts","Agents")'" formnovalidate> Posts (@ViewData["Count"])</button>
+
+        <a href="@Url.Action("ValidatePosts","Agents")" class="btn btn-primary btn-lg" formnovalidate> Posts (@ViewData["Count"]) </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
 </div>

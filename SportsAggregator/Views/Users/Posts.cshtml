@@ -3,29 +3,23 @@
     ViewBag.Title = "Users Post Article";
 }
 
-<style>
-    .Buttons:hover {
-        background-color: dimgray;
-        color: white;
-    }
-
-    .PostButton {
-        background-color: dimgray;
-        color: white;
-    }
-</style>
 <script type="text/javascript" src="~/Scripts/Register.js"></script>
 
 <div class="row" style="padding-top:100px;text-align:center;">
     <div class="col-md-15">
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Users")'" formnovalidate> Players </button>
+
+        <a href="@Url.Action("Players","Users")" class="btn btn-primary btn-lg" formnovalidate> Players </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Users")'" formnovalidate> Tournaments </button>
+
+        <a href="@Url.Action("Tournaments","Users")" class="btn btn-primary btn-lg" formnovalidate> Tournaments </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Users")'" formnovalidate> Tickets </button>
+
+        <a href="@Url.Action("Tickets","Users")" class="btn btn-primary btn-lg" formnovalidate> Tickets </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="PostButton" onclick="location.href='@Url.Action("Posts","Users")'" formnovalidate> Posts </button>
+
+        <a href="@Url.Action("Posts","Users")" class="btn btn-primary btn-lg" formnovalidate> Posts </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
     </div>
 </div>
 
@@ -64,8 +58,8 @@
                 @Html.ValidationMessage("FileError", new { id = "errorMessage2", style = "color: red" })
             </div>
             <div class="row" style="margin-right:5%; text-align:center">
-                <button type="submit" id="submit_btn" class="btn btn-default" value="Submit" title="Post your article" style="border:solid;background-color:ButtonFace">Post</button>
-                <button type="reset" class="btn btn-default" value="Cancel" title="Cancel the post" style="border:solid;background-color:ButtonFace">Cancel</button>
+                <button type="submit" id="submit_btn" class="btn btn-default" value="Submit" title="Post your article">Post</button>
+                <button type="reset" class="btn btn-default" value="Cancel" title="Cancel the post">Cancel</button>
             </div>
         </form>
     </div>

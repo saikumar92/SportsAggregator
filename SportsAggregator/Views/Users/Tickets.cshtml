@@ -2,28 +2,22 @@
     ViewBag.Title = "Users Tickets";
 }
 
-<style>
-    .Buttons:hover {
-        background-color: dimgray;
-        color: white;
-    }
-
-    .TicketsButton {
-        background-color: dimgray;
-        color: white;
-    }
-</style>
 
 <div class="row" style="padding-top:100px;text-align:center;">
     <div class="col-md-15">
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Users")'" formnovalidate> Players </button>
+
+        <a href="@Url.Action("Players","Users")" class="btn btn-primary btn-lg" formnovalidate> Players </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Users")'" formnovalidate> Tournaments </button>
+
+        <a href="@Url.Action("Tournaments","Users")" class="btn btn-primary btn-lg" formnovalidate> Tournaments </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="TicketsButton" onclick="location.href='@Url.Action("Tickets","Users")'" formnovalidate> Tickets </button>
+
+        <a href="@Url.Action("Tickets","Users")" class="btn btn-primary btn-lg" formnovalidate> Tickets </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Posts","Users")'" formnovalidate> Posts </button>
+
+        <a href="@Url.Action("Posts","Users")" class="btn btn-primary btn-lg" formnovalidate> Posts </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
     </div>
 </div>
 

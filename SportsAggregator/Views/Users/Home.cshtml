@@ -4,23 +4,21 @@
     ViewBag.Title = "Users Home";
 }
 
-<style>
-    .Buttons:hover {
-        background-color: dimgray;
-        color:white;
-    }
-</style>
 
 <div class="row" style="padding-top:100px;text-align:center;">
     <div class="col-md-15">
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Users")'"> Players </button>
+        <a href="@Url.Action("Players","Users")" class="btn btn-primary btn-lg"> Players </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Users")'"> Tournaments </button>
+
+        <a href="@Url.Action("Tournaments","Users")" class="btn btn-primary btn-lg"> Tournaments </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Users")'"> Tickets </button>
+
+        <a href="@Url.Action("Tickets","Users")" class="btn btn-primary btn-lg"> Tickets </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Posts","Users")'"> Posts </button>
+
+        <a href="@Url.Action("Posts","Users")" class="btn btn-primary btn-lg"> Posts </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
     </div>
 </div>
 
@@ -28,7 +26,7 @@
     <h2>Notifications :</h2>
 </div>
 <div class="row" style="height:100px;width:100px; margin-bottom:20%; margin-left:2%">
-   <textarea style="height:300px;width:1040px;background-color:lightgray;font-weight:bold;border-width:thick;font-size:larger;" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@ViewData["Notifications"]</textarea>
+   <textarea style="height:300px;width:1040px;font-weight:bold;border-width:thick;font-size:larger;" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@ViewData["Notifications"]</textarea>
 </div>
 <div class="row" style="margin-left:2%">
     <h2>Articles :</h2>

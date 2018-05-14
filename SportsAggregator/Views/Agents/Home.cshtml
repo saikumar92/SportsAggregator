@@ -13,13 +13,16 @@
 
 <div class="row" style="padding-top:100px;text-align:center;">
     <div class="col-md-15">
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Players","Agents")'"> Players </button>
+        <a href="@Url.Action("Players","Agents")" class="btn btn-primary btn-lg" formnovalidate> Players </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tournaments","Agents")'"> Tournaments </button>
+
+        <a href="@Url.Action("Tournaments","Agents")" class="btn btn-primary btn-lg" formnovalidate> Tournaments </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("Tickets","Agents")'"> Tickets </button>
+
+        <a href="@Url.Action("Tickets","Agents")" class="btn btn-primary btn-lg" formnovalidate> Tickets </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <button style="height:100px;width:200px;font-size:25px;border-color:#000000" class="Buttons" onclick="location.href='@Url.Action("ValidatePosts","Agents")'"> Posts (@ViewData["Count"]) </button>
+
+        <a href="@Url.Action("ValidatePosts","Agents")" class="btn btn-primary btn-lg" formnovalidate> Posts (@ViewData["Count"]) </a>
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
 </div>
@@ -28,7 +31,7 @@
     <h2>Notifications :</h2>
 </div>
 <div class="row" style="height:100px;width:100px; margin-bottom:20%; margin-left:2%">
-    <textarea style="height:300px;width:1040px;background-color:lightblue;font-weight:bold;border-width:thick;font-size:larger;" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@ViewData["Notifications"]</textarea>
+    <textarea style="height:300px;width:1040px;background-color:white;font-weight:bold;border-width:thick;font-size:larger;" readonly="readonly" visiblity="true" wrap="soft" textmode="multiline">@ViewData["Notifications"]</textarea>
 </div>
 <div class="row" style="margin-left:5%">
     <h2>Articles :</h2>
